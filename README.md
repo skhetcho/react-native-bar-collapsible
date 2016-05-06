@@ -1,15 +1,12 @@
-=========================================
-Bar/Collapsible React Native
-=========================================
+
+# Bar/Collapsible React Native
 
 React Native component
 
 
-License
-=======
+## License
 
-::
-
+```
    Copyright (C) 2016 Carolina Aguilar
 
    Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,3 +21,4 @@ License
    KIND, either express or implied.  See the License for the
    specific language governing permissions and limitations
    under the License.
+```
