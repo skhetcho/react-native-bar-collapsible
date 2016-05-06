@@ -4,7 +4,7 @@ import React, { Animated, View, Text, TouchableHighlight } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import styles from '../styles/style'
+import styles from './style'
 
 class BarCollapsible extends React.Component {
     constructor(props) {
