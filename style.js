@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 module.exports = StyleSheet.create({
-    headerBar: {
+    bar: {
         alignItems: 'center',
         alignSelf: 'stretch',
         backgroundColor: '#333',
@@ -9,7 +9,7 @@ module.exports = StyleSheet.create({
         height: 45,
     },
 
-    headerBarWrapper: {
+    barWrapper: {
         alignSelf: 'stretch',
     },
 

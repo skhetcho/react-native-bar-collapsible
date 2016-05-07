@@ -62,7 +62,7 @@ class BarCollapsible extends React.Component {
 
     _renderDefault() {
         return (
-            <View style={styles.headerBar}>
+            <View style={styles.bar}>
                 <Text style={styles.title}>{this.state.title}</Text>
             </View>
         );
@@ -70,8 +70,8 @@ class BarCollapsible extends React.Component {
 
     _renderClickable() {
         return (
-            <TouchableHighlight style={styles.headerBarWrapper} underlayColor='transparent' onPress={this.state.onPressed}>
-                <View style={[styles.headerBar, this._backgroundColor]}>
+            <TouchableHighlight style={styles.barWrapper} underlayColor='transparent' onPress={this.state.onPressed}>
+                <View style={[styles.bar, this._backgroundColor]}>
                     <Text style={styles.title}>{this.state.title}</Text>
                     <Icon name={this.state.icon} size={this._iconSize} color={this._tintColor} style={styles.icon}/>
                 </View>
@@ -82,8 +82,8 @@ class BarCollapsible extends React.Component {
     _renderCollapsible() {
         return (
             <View>
-                <TouchableHighlight style={styles.headerBarWrapper} underlayColor='transparent' onPress={() => { this._toggleView()}}>
-                    <View style={[styles.headerBar, this._backgroundColor]}>
+                <TouchableHighlight style={styles.barWrapper} underlayColor='transparent' onPress={() => { this._toggleView()}}>
+                    <View style={[styles.bar, this._backgroundColor]}>
                         <Text style={styles.title}>{this.state.title}</Text>
                         <Icon name={this.state.icon} size={this._iconSize} color={this._tintColor} style={styles.icon}/>
                     </View>
