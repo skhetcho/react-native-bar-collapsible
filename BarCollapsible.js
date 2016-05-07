@@ -34,8 +34,8 @@ class BarCollapsible extends React.Component {
 
             this.setState({
                 icon: this.props.iconActive || 'plus',
-                iconActive: this.props.iconActive || 'plus',
-                iconInactive: this.props.iconInactive || 'minus',
+                iconCollapsed: this.props.iconCollapsed || 'plus',
+                iconOpened: this.props.iconOpened || 'minus',
                 title: this.props.title
             });
         } else {
@@ -99,7 +99,7 @@ class BarCollapsible extends React.Component {
     _toggleView() {
         this.setState({
             show: !this.state.show,
-            icon: this.state.show ? this.state.iconActive : this.state.iconInactive
+            icon: this.state.show ? this.state.iconCollapsed : this.state.iconOpened
         });
     }
 }
