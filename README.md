@@ -4,6 +4,8 @@
 It's a React Native bar component with different interactions: Text Only,
 Clickable, Collapsible.
 
+![demo](https://raw.githubusercontent.com/caroaguilar/images-gifs/master/react-native-bar-collapsible/demo.gif)
+
 ## Install
 
 Install the package via npm:
