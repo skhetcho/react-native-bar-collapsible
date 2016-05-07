@@ -12,13 +12,29 @@ Install the package via npm:
     npm i react-native-bar-collapsible --save
 ```
 
+The [React Native Vector Icons](https://github.com/oblador/react-native-vector-icons)
+package is a dependency of this component and it's needed to link it, as you can
+read in its installation instructions.
+
+In order to link it to the project first install [rnpm](https://github.com/rnpm/rnpm)
+
+```javascript
+    npm install rnpm -g
+```
+
+Then run the following command to link the react-native-vector-icons package
+
+```javascript
+    rnpm link react-native-vector-icons
+```
+
+## Usage
+
 Import the component:
 
 ```javascript
     import Collapsible from 'react-native-bar-collapsible';
 ```
-
-## Usage
 
 **Text Only**:
 
@@ -90,6 +106,8 @@ Additional to the basic properties, you can pass:
 The component use Font Awesome Icons from
 [React Native Vector Icons](https://github.com/oblador/react-native-vector-icons)
 package. All the icons available can be found [here](http://fortawesome.github.io/Font-Awesome/icons/).
+
+
 
 
 ## License
