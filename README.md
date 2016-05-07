@@ -33,7 +33,7 @@ Then run the following command to link the react-native-vector-icons package
 Import the component:
 
 ```javascript
-    import Collapsible from 'react-native-bar-collapsible';
+    import Bar from 'react-native-bar-collapsible';
 ```
 
 **Text Only**:
@@ -41,7 +41,7 @@ Import the component:
 This is the default action, you just need to pass a "title" property with the text to show
 
 ```jsx
-    <Collapsible title='My title'/>
+    <Bar title='My title'/>
 ```
 
 #### Clickable:
@@ -55,7 +55,7 @@ You need to pass the properties:
 - ***onPressed:*** function
 
 ```jsx
-<Collapsible
+<Bar
     title='My title'
     clickable={true}
     icon='rocket'
@@ -75,7 +75,7 @@ You need to pass the properties:
 - ***children:*** The View or component you want to rendered in the toggled view.
 
 ```jsx
-<Collapsible
+<Bar
     title='My title'
     collapsible={true}
     iconCollapsed='chevron-right'
@@ -92,7 +92,7 @@ Additional to the basic properties, you can pass:
 - ***tintColor***
 
 ```jsx
-<Collapsible
+<Bar
     title='My title'
     clickable={true}
     icon='rocket'
