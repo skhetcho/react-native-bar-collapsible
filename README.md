@@ -33,7 +33,7 @@ This is the default action, you just need to pass a "title" property with the te
 You need to pass the properties:
 
 - ***title:*** string
-- ***clickable:*** boolean. If false or null the default bar to be rendered is text only.
+- ***clickable:*** boolean. If false or null is passed the bar will be rendered as text only.
 - ***icon:*** string, a FontAwesome icon name. If no icon property is passed the
     default is 'angle-right'.
 - ***onPressed:*** function
@@ -51,7 +51,7 @@ You need to pass the properties:
 You need to pass the properties:
 
 - ***title:*** string
-- ***collapsible:*** boolean. If false or null the default bar to be rendered is text only.
+- ***collapsible:*** boolean. If false or null is passed the bar will be rendered as text only.
 - ***iconCollapsed:*** string, a FontAwesome icon name. If no icon property is passed the
     default is 'plus'.
 - ***iconOpened:*** string, a FontAwesome icon name. If no icon property is passed the
