@@ -8,13 +8,13 @@ Clickable, Collapsible.
 
 Install the package via npm:
 
-```
+```javascript
     npm i react-native-bar-collapsible --save
 ```
 
 Import the component:
 
-```
+```javascript
     import Collapsible from 'react-native-bar-collapsible';
 ```
 
@@ -22,66 +22,75 @@ Import the component:
 
 **Text Only**:
 
-    This is the default action, you just need to pass a "title" property with
-    the text to show
+This is the default action, you just need to pass a "title" property with the text to show
 
-```
+```jsx
     <Collapsible title='My title'/>
 ```
 
-**Clickable**:
+#### Clickable:
 
-    You need to pass the properties:
-    - title: string
-    - clickable: boolean. If false or null the default bar to be rendered is text only.
-    - icon: string, a FontAwesome icon name. If no icon property is passed the
-        default is 'angle-right'.
-    - onPressed: function
+You need to pass the properties:
 
+- ***title:*** string
+- ***clickable:*** boolean. If false or null the default bar to be rendered is text only.
+- ***icon:*** string, a FontAwesome icon name. If no icon property is passed the
+    default is 'angle-right'.
+- ***onPressed:*** function
+
+```jsx
+<Collapsible
+    title='My title'
+    clickable={true}
+    icon='rocket'
+    onPressed={() => this._myFunction()}/>
 ```
-    <Collapsible
-        title='My title'
-        clickable={true}
-        icon='rocket'
-        onPressed={() => this._myFunction()}/>
-```
 
-**Collapsible**:
+#### Collapsible:
 
-    You need to pass the properties:
-    - title: string
-    - collapsible: boolean. If false or null the default bar to be rendered is text only.
-    - iconCollapsed: string, a FontAwesome icon name. If no icon property is passed the
-        default is 'plus'.
-    - iconOpened: string, a FontAwesome icon name. If no icon property is passed the
-        default is 'minus'.
-    - children: The View or component you want to rendered in the toggled view.
+You need to pass the properties:
 
-```
-    <Collapsible
-        title='My title'
-        collapsible={true}
-        iconCollapsed='chevron-right'
-        iconOpened='chevron-down'
-        children={<OtherComponent/>}/>
+- ***title:*** string
+- ***collapsible:*** boolean. If false or null the default bar to be rendered is text only.
+- ***iconCollapsed:*** string, a FontAwesome icon name. If no icon property is passed the
+    default is 'plus'.
+- ***iconOpened:*** string, a FontAwesome icon name. If no icon property is passed the
+    default is 'minus'.
+- ***children:*** The View or component you want to rendered in the toggled view.
+
+```jsx
+<Collapsible
+    title='My title'
+    collapsible={true}
+    iconCollapsed='chevron-right'
+    iconOpened='chevron-down'
+    children={<OtherComponent/>}/>
 ```
 
 ### Another properties for customization
 
-    Additional to the basic properties, you can pass:
-    - backgroundColor
-    - iconSize
-    - tintColor
+Additional to the basic properties, you can pass:
 
+- ***backgroundColor***
+- ***iconSize***
+- ***tintColor***
+
+```jsx
+<Collapsible
+    title='My title'
+    clickable={true}
+    icon='rocket'
+    backgroundColor='#BF5327'
+    tintColor='#F2F2F2'
+    iconSize={15}/>
 ```
-    <Collapsible
-        title='My title'
-        clickable={true}
-        icon='rocket'
-        backgroundColor='#BF5327'
-        tintColor='#F2F2F2'
-        iconSize={15}/>
-```
+
+### Icons
+
+The component use Font Awesome Icons from
+[React Native Vector Icons](https://github.com/oblador/react-native-vector-icons)
+package. All the icons available can be found [here](http://fortawesome.github.io/Font-Awesome/icons/).
+
 
 ## License
 
