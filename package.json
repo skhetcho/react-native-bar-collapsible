@@ -23,6 +23,6 @@
   },
   "homepage": "https://github.com/caroaguilar/react-native-bar-collapsible#readme",
   "dependencies": {
-    "react-native-vector-icons": "^1.3.4"
+    "react-native-vector-icons": "^2.0.3"
   }
 }
