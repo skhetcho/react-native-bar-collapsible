@@ -1,6 +1,7 @@
 'use strict';
 
-import React, { Animated, View, Text, TouchableHighlight } from 'react-native';
+import React from 'react';
+import { Animated, View, Text, TouchableHighlight } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 
