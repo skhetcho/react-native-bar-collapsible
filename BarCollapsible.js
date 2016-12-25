@@ -1,13 +1,13 @@
 'use strict';
 
-import React from 'react';
+import React, { PropTypes, Component } from 'react';
 import { Animated, View, Text, TouchableHighlight } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import styles from './style'
 
-class BarCollapsible extends React.Component {
+class BarCollapsible extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -47,7 +47,6 @@ class BarCollapsible extends React.Component {
 
         this._tintColor = this.props.tintColor || '#FFF';
         this._iconSize = this.props.iconSize || 30;
-        this._backgroundColor = { backgroundColor: this.props.backgroundColor };
     }
 
     render() {
@@ -72,7 +71,7 @@ class BarCollapsible extends React.Component {
     _renderClickable() {
         return (
             <TouchableHighlight style={styles.barWrapper} underlayColor='transparent' onPress={this.state.onPressed}>
-                <View style={[styles.bar, this._backgroundColor]}>
+                <View style={[styles.bar, this.props.style]}>
                     <Text style={styles.title}>{this.state.title}</Text>
                     <Icon name={this.state.icon} size={this._iconSize} color={this._tintColor} style={styles.icon}/>
                 </View>
@@ -84,7 +83,7 @@ class BarCollapsible extends React.Component {
         return (
             <View>
                 <TouchableHighlight style={styles.barWrapper} underlayColor='transparent' onPress={() => { this._toggleView()}}>
-                    <View style={[styles.bar, this._backgroundColor]}>
+                    <View style={[styles.bar, this.props.style]}>
                         <Text style={styles.title}>{this.state.title}</Text>
                         <Icon name={this.state.icon} size={this._iconSize} color={this._tintColor} style={styles.icon}/>
                     </View>
@@ -104,5 +103,10 @@ class BarCollapsible extends React.Component {
         });
     }
 }
+
+BarCollapsible.propTypes = {
+  style: View.propTypes.style,
+  tintColor: PropTypes.string,
+};
 
 module.exports = BarCollapsible;
