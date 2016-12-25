@@ -83,24 +83,37 @@ You need to pass the properties:
     iconCollapsed='chevron-right'
     iconOpened='chevron-down'
     children={<OtherComponent/>}/>
+
+// or
+
+<Bar
+    title='My title'
+    collapsible={true}
+    iconCollapsed='chevron-right'
+    iconOpened='chevron-down'
+>
+  <OtherComponent />
+</Bar>
 ```
 
 ### Another properties for customization
 
 Additional to the basic properties, you can pass:
 
-- ***backgroundColor***
+- ***style***
 - ***iconSize***
 - ***tintColor***
+- ***titleStyle***
 
 ```jsx
 <Bar
+    style={{ backgroundColor: '#FFF'}}
     title='My title'
+    titleStyle={{ color: #000 }}
     clickable={true}
     icon='rocket'
-    backgroundColor='#BF5327'
-    tintColor='#F2F2F2'
-    iconSize={15}/>
+    tintColor='#BBB'
+    iconSize={15} />
 ```
 
 ### Icons
