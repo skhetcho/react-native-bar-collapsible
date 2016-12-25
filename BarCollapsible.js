@@ -63,7 +63,7 @@ class BarCollapsible extends Component {
     _renderDefault() {
         return (
             <View style={styles.bar}>
-                <Text style={styles.title}>{this.state.title}</Text>
+                <Text style={[styles.title, this.props.titleStyle]}>{this.state.title}</Text>
             </View>
         );
     }
@@ -72,7 +72,7 @@ class BarCollapsible extends Component {
         return (
             <TouchableHighlight style={styles.barWrapper} underlayColor='transparent' onPress={this.state.onPressed}>
                 <View style={[styles.bar, this.props.style]}>
-                    <Text style={styles.title}>{this.state.title}</Text>
+                    <Text style={[styles.title, this.props.titleStyle]}>{this.state.title}</Text>
                     <Icon name={this.state.icon} size={this._iconSize} color={this._tintColor} style={styles.icon}/>
                 </View>
             </TouchableHighlight>
@@ -84,7 +84,7 @@ class BarCollapsible extends Component {
             <View>
                 <TouchableHighlight style={styles.barWrapper} underlayColor='transparent' onPress={() => { this._toggleView()}}>
                     <View style={[styles.bar, this.props.style]}>
-                        <Text style={styles.title}>{this.state.title}</Text>
+                        <Text style={[styles.title, this.props.titleStyle]}>{this.state.title}</Text>
                         <Icon name={this.state.icon} size={this._iconSize} color={this._tintColor} style={styles.icon}/>
                     </View>
                 </TouchableHighlight>
@@ -106,6 +106,7 @@ class BarCollapsible extends Component {
 
 BarCollapsible.propTypes = {
   style: View.propTypes.style,
+  titleStyle: Text.propTypes.style,
   tintColor: PropTypes.string,
 };
 
