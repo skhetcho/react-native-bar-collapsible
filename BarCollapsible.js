@@ -16,7 +16,7 @@ class BarCollapsible extends Component {
             onPressed: null,
             title: '',
             children: null,
-            show: false
+            show: props.showOnStart || false
         };
     }
 
@@ -32,9 +32,10 @@ class BarCollapsible extends Component {
                 this.state.fadeAnim,
                 { toValue: 1 }
             ).start();
-
+            const openIcon = this.props.iconOpened || 'minus'
+            const activeIcon = this.props.iconActive || 'plus'
             this.setState({
-                icon: this.props.iconActive || 'plus',
+                icon: this.props.showOnStart ? openIcon : activeIcon,
                 iconCollapsed: this.props.iconCollapsed || 'plus',
                 iconOpened: this.props.iconOpened || 'minus',
                 title: this.props.title
