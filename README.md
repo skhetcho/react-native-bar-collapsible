@@ -70,6 +70,7 @@ You need to pass the properties:
 
 - ***title:*** string
 - ***collapsible:*** boolean. If false or null is passed the bar will be rendered as text only.
+- ***showOnStart:*** boolean. If true the bar will start opened and the children component is shown by default.
 - ***iconCollapsed:*** string, a FontAwesome icon name. If no icon property is passed the
     default is 'plus'.
 - ***iconOpened:*** string, a FontAwesome icon name. If no icon property is passed the
