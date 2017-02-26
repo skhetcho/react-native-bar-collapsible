@@ -81,6 +81,7 @@ You need to pass the properties:
 <Bar
     title='My title'
     collapsible={true}
+    showOnStart={false}
     iconCollapsed='chevron-right'
     iconOpened='chevron-down'
     children={<OtherComponent/>}/>
@@ -90,6 +91,7 @@ You need to pass the properties:
 <Bar
     title='My title'
     collapsible={true}
+    showOnStart={true}
     iconCollapsed='chevron-right'
     iconOpened='chevron-down'
 >
