@@ -1,114 +1,187 @@
 'use strict';
 
-import React, { PropTypes, Component } from 'react';
-import { Animated, View, Text, TouchableHighlight } from 'react-native';
-
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { 
+    Animated, 
+    View, 
+    Text, 
+    TouchableHighlight 
+} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-
 import styles from './style'
 
 class BarCollapsible extends Component {
     constructor(props) {
         super(props);
+
         this.state = {
             fadeAnim: new Animated.Value(0),
-            icon: 'angle-right',
+            icon: props.icon,
             onPressed: null,
             title: '',
             children: null,
-            show: props.showOnStart || false
+            show: props.showOnStart
         };
     }
 
-    componentDidMount() {
-        if (this.props.clickable) {
-            this.setState({
-                icon: this.props.icon,
-                onPressed: this.props.onPressed,
-                title: this.props.title
-            });
-        } else if (this.props.collapsible) {
-            Animated.timing(
-                this.state.fadeAnim,
-                { toValue: 1 }
-            ).start();
-            const openIcon = this.props.iconOpened || 'minus'
-            const activeIcon = this.props.iconActive || 'plus'
-            this.setState({
-                icon: this.props.showOnStart ? openIcon : activeIcon,
-                iconCollapsed: this.props.iconCollapsed || 'plus',
-                iconOpened: this.props.iconOpened || 'minus',
-                title: this.props.title
-            });
-        } else {
-            this.setState({
-                title: this.props.title
-            });
-        }
-
-        this._tintColor = this.props.tintColor || '#FFF';
-        this._iconSize = this.props.iconSize || 30;
+    static propTypes = {
+        style: View.propTypes.style,
+        titleStyle: Text.propTypes.style,
+        tintColor: PropTypes.string,
     }
 
-    render() {
-
-        if (this.props.clickable) {
-            return this._renderClickable();
-        } else if (this.props.collapsible) {
-            return this._renderCollapsible();
-        } else {
-            return this._renderDefault();
-        }
+    static defaultProps = {
+        showOnStart: false,
+        icon: 'angle-right',
+        iconOpened: 'minus',
+        iconActive: 'plus',
+        iconCollapsed: 'plus',
+        tintColor: '#fff',
+        iconSize: 30
     }
 
-    _renderDefault() {
+    componentWillMount() {
+        const {
+            collapsible, 
+            clickable, 
+            icon,
+            title,
+            tintColor,
+            iconSize, 
+            iconOpened,
+            iconActive,
+            iconCollapsed,
+            showOnStart,
+            onPressed
+        } = this.props;
+        const {fadeAnim} = this.state;
+
+        if (clickable) {
+            this.setState({
+                icon,
+                onPressed,
+                title
+            });
+        } else if (collapsible) {
+            this.setState({
+                icon: showOnStart ? iconOpened : iconActive,
+                iconCollapsed,
+                iconOpened,
+                title
+            }, Animated.timing(fadeAnim, { toValue: 1 }).start());
+        } else {
+            this.setState({title});
+        }
+
+    }
+
+    toggleView = () => {
+        const {show, iconCollapsed, iconOpened} = this.state;
+
+        this.setState({
+            show: !show,
+            icon: show ? iconCollapsed : iconOpened
+        });
+    }
+
+    renderDefault = () => {
+        const {titleStyle} = this.props;
+        const {title} = this.state;
+
         return (
             <View style={styles.bar}>
-                <Text style={[styles.title, this.props.titleStyle]}>{this.state.title}</Text>
+                <Text style={[styles.title, titleStyle]}>
+                    {title}
+                </Text>
             </View>
         );
     }
 
-    _renderClickable() {
+    renderCollapsible = () => {
+        const {
+            style, 
+            iconStyle,
+            titleStyle, 
+            tintColor, 
+            iconSize, 
+            children
+        } = this.props;
+        const {icon, fadeAnim, title} = this.state;
+
         return (
-            <TouchableHighlight style={styles.barWrapper} underlayColor='transparent' onPress={this.state.onPressed}>
-                <View style={[styles.bar, this.props.style]}>
-                    <Text style={[styles.title, this.props.titleStyle]}>{this.state.title}</Text>
-                    <Icon name={this.state.icon} size={this._iconSize} color={this._tintColor} style={styles.icon}/>
+            <View>
+                <TouchableHighlight 
+                    style={styles.barWrapper} 
+                    underlayColor='transparent' 
+                    onPress={this.toggleView}
+                >
+                    <View style={[styles.bar, style]}>
+                        <Text style={[styles.title, titleStyle]}>
+                            {title}
+                        </Text>
+                        <Icon 
+                            name={icon} 
+                            size={iconSize} 
+                            color={tintColor} 
+                            style={[styles.icon, iconStyle]}
+                        />
+                    </View>
+                </TouchableHighlight>
+                { this.state.show &&  
+                    <Animated.View
+                        style={{opacity: fadeAnim}}
+                    >
+                        {children}
+                    </Animated.View> 
+                }
+            </View>
+        );
+    }
+
+    renderClickable = () => {
+        const {
+            style, 
+            titleStyle, 
+            tintColor, 
+            iconSize, 
+            iconStyle
+        } = this.props;
+        const {icon, title, onPressed} = this.state;
+
+        return (
+            <TouchableHighlight 
+                style={styles.barWrapper} 
+                underlayColor='transparent' 
+                onPress={onPressed}
+            >
+                <View style={[styles.bar, style]}>
+                    <Text style={[styles.title, titleStyle]}>
+                        {title}
+                    </Text>
+                    <Icon 
+                        name={icon} 
+                        size={iconSize} 
+                        color={tintColor} 
+                        style={[styles.icon, iconStyle]}
+                    />
                 </View>
             </TouchableHighlight>
         );
     }
 
-    _renderCollapsible() {
-        return (
-            <View>
-                <TouchableHighlight style={styles.barWrapper} underlayColor='transparent' onPress={() => { this._toggleView()}}>
-                    <View style={[styles.bar, this.props.style]}>
-                        <Text style={[styles.title, this.props.titleStyle]}>{this.state.title}</Text>
-                        <Icon name={this.state.icon} size={this._iconSize} color={this._tintColor} style={styles.icon}/>
-                    </View>
-                </TouchableHighlight>
-                { this.state.show &&  <Animated.View
-                    style={{opacity: this.state.fadeAnim}}>
-                    {this.props.children}
-                </Animated.View> }
-            </View>
-        );
+    render() {
+        const {clickable, collapsible} = this.props;
+
+        if (clickable) {
+            return this.renderClickable();
+        } else if (collapsible) {
+            return this.renderCollapsible();
+        } else {
+            return this.renderDefault();
+        }
     }
 
-    _toggleView() {
-        this.setState({
-            show: !this.state.show,
-            icon: this.state.show ? this.state.iconCollapsed : this.state.iconOpened
-        });
-    }
 }
 
-BarCollapsible.propTypes = {
-  style: View.propTypes.style,
-  titleStyle: Text.propTypes.style,
-  tintColor: PropTypes.string,
-};
-
-module.exports = BarCollapsible;
+export default BarCollapsible;
