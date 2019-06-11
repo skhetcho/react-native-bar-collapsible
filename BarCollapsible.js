@@ -1,6 +1,7 @@
 'use strict';
 
 import React, { Component } from 'react';
+import ViewPropTypes from 'react-native';
 import PropTypes from 'prop-types';
 import { 
     Animated, 
@@ -26,7 +27,7 @@ class BarCollapsible extends Component {
     }
 
     static propTypes = {
-        style: View.propTypes.style,
+        style: ViewPropTypes.style,
         titleStyle: Text.propTypes.style,
         tintColor: PropTypes.string,
     }
